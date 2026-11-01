@@ -146,4 +146,12 @@ vite.config.ts.timestamp-*
 .astro/
 
 # Turbo Repo
-.turbo
+.turbo 
+
+# Cypress
+cypress/screenshots
+cypress/videos
+
+# Cypress examples (только локально)
+cypress/e2e/1-getting-started
+cypress/e2e/2-advanced-examples
