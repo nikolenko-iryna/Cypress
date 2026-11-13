@@ -1,0 +1,28 @@
+{
+  "name": "aqa-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cypress.config.js",
+  "devDependencies": {
+    "cypress": "^15.21.1",
+    "mochawesome": "^8.1.1",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
+  },
+  "scripts": {
+       "test:qauto": "cypress run --config-file cypress.qauto.config.js --spec cypress/e2e/garage.cy.js",
+    "test:qauto2": "cypress run --config-file cypress.qauto2.config.js --spec cypress/e2e/garage.cy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolenko-iryna/Cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nikolenko-iryna/Cypress/issues"
+  },
+  "homepage": "https://github.com/nikolenko-iryna/Cypress#readme"
+}
