@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import { GaragePage } from "../pages/GaragePage";
 import { ExpensesPage } from "../pages/ExpensesPage";
 
@@ -5,12 +6,26 @@ const garagePage = new GaragePage();
 const expensesPage = new ExpensesPage();
 
 describe("Garage and fuel expenses", () => {
+  let token;
+
   beforeEach(() => {
-    cy.visit("/", { auth: { username: "guest", password: "welcome2qauto" } });
-    cy.env(["email", "password"]).then(({ email, password }) => {
-      cy.login(email, password);
+    const user = {
+      name: "John",
+      lastName: "Dou",
+      email: faker.internet.email(),
+      password: "Qwerty12345",
+      repeatPassword: "Qwerty12345",
+    };
+
+    cy.request("POST", "/api/auth/signup", user).then((response) => {
+      token = response.headers["set-cookie"][0].split(";")[0];
     });
-    cy.deleteAllCars();
+
+    cy.visit("/panel/garage", { auth: { username: "guest", password: "welcome2qauto" } });
+  });
+
+  afterEach(() => {
+    cy.request({ method: "DELETE", url: "/api/users", headers: { Cookie: token } });
   });
 
   it("Add car", () => {

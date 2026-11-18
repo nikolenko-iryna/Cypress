@@ -25,9 +25,11 @@ export class GaragePage {
 
   addCar(brand, model, mileage) {
     this.addCarButton.click();
+    this.modelSelect.should("contain", "TT");
     this.brandSelect.select(brand);
     this.modelSelect.select(model);
     this.mileageField.type(mileage);
     this.addButton.click();
   }
 }
+
